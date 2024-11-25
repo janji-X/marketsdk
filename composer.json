@@ -1,0 +1,10 @@
+{
+    "name": "market/marketsdk",
+    "type": "library",
+    "authors": [
+        {
+            "name": "janji"
+        }
+    ],
+    "require": {}
+}
