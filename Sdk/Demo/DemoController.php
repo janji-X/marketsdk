@@ -211,4 +211,15 @@ class DemoController
         $attr['ids'] = '27146972,27146973,27146974';
         return self::$spotTradeModel::batchCancelDeal($attr);
     }
+
+
+    /**
+     * 充提币记录
+     * @return array|mixed
+     */
+    public static function getCoinExchangeList()
+    {
+        $attr = [];
+        return self::$spotTradeModel::getCoinExchangeList($attr);
+    }
 }

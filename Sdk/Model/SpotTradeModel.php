@@ -35,6 +35,7 @@ class SpotTradeModel extends HttpBaseModel
         'getHistoryDealList' => '/Deal/getHistoryDealList', // 历史委托列表
         'cancelDeal' => '/Deal/cancelDeal', // 撤销委托单
         'batchCancelDeal' => '/Deal/batchCancelDeal', // 批量撤销委托单
+        'getCoinExchangeList' => '/Property/getCoinExchangeList', // 批量撤销委托单
     ];
 
     // 字段键名映射关系[固定配置]
@@ -297,6 +298,20 @@ class SpotTradeModel extends HttpBaseModel
     }
 
 
+    // 获取充提币记录
+    public static function getCoinExchangeList($ext = [])
+    {
+        $attribute = $ext;
+        $pending_data = static::encodeDataValue($attribute);
+        $pending_data = static::encodeDataKey($pending_data);
+        $response_str = HttpClient::post(static::getRequestUrl(__FUNCTION__),
+            static::getRequestData($pending_data),
+            static::$timeout, static::$proxy_switch);
+
+        $response_data = static::getFormatResponseData($response_str);
+
+        return $response_data ?? [];
+    }
     // 获取请求URL
     public static function getRequestUrl($function, array $attribute = [])
     {
